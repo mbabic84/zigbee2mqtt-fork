@@ -38,10 +38,10 @@ const fzLocal = {
         convert: (model, msg, publish, options, meta) => {
             let data;
 
-            if (msg.data.data) {
-                data = msg.data.data;
-            } else if (msg.data.dpValues && msg.data.dpValues.length === 1) {
+            if (msg.data.dpValues && msg.data.dpValues.length === 1) {
                 data = msg.data.dpValues[0];
+            } else {
+                data = msg.data;
             }
 
             if (!data) {
@@ -50,6 +50,8 @@ const fzLocal = {
 
             const dp = data.dp;
             const value = tuya.getDataValue(data.datatype, data.data);
+
+            console.log(dp, value);
 
             // if (dp >= 101 && dp <=107) return; // handled by tuya_thermostat_weekly_schedule
 
