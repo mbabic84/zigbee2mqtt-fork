@@ -34,7 +34,7 @@ const tuyaLocal = {
 const fzLocal = {
     zs_thermostat: {
         cluster: 'manuSpecificTuya',
-        type: ['commandGetData', 'commandSetDataResponse'],
+        type: ['commandGetData', 'commandSetDataResponse', 'commandDataResponse'],
         convert: (model, msg, publish, options, meta) => {
             let data;
 
@@ -260,12 +260,12 @@ const tzLocal = {
     },
 };
 const device = {
-    // Moes Tuya Alt Thermostat
-    zigbeeModel: ['TS601'],
-    fingerprint: [{ modelID: 'TS0601', manufacturerName: '_TZE200_e9ba97vf' }, { modelID: 'TS0601', manufacturerName: '_TZE200_husqqvux' }],
-    model: 'TS601',
-    vendor: 'TuYa',
-    whiteLabel: [{ vendor: 'ZONNSMART', model: 'TV01-ZG' }],
+    // TESLA Radiator valve with thermostat
+    zigbeeModel: ['TS0601'],
+    fingerprint: [{manufacturerName: "_TZE200_husqqvux", modelId: "TS0601"}],
+    model: 'TS0601',
+    vendor: 'TESLA',
+    whiteLabel: [{ vendor: 'TESLA', model: 'TV01-ZG' }],
     description: 'Radiator valve with thermostat',
     fromZigbee: [
         fz.ignore_basic_report,
