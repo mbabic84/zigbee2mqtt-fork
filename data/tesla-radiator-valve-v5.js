@@ -39,7 +39,7 @@ const fzLocal = {
             let data;
 
             if (msg.data) {
-                data = msq.data;
+                data = msg.data;
             } else if (msg.dpValues && msg.dpValues.length === 1) {
                 data = msg.dpValues[0];
             }
