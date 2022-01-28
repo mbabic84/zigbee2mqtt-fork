@@ -38,10 +38,10 @@ const fzLocal = {
         convert: (model, msg, publish, options, meta) => {
             let data;
 
-            if (msg.data) {
-                data = msg.data;
-            } else if (msg.dpValues && msg.dpValues.length === 1) {
-                data = msg.dpValues[0];
+            if (msg.data.data) {
+                data = msg.data.data;
+            } else if (msg.data.dpValues && msg.data.dpValues.length === 1) {
+                data = msg.data.dpValues[0];
             }
 
             if (!data) {
