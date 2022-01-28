@@ -36,6 +36,18 @@ const fzLocal = {
         cluster: 'manuSpecificTuya',
         type: ['commandGetData', 'commandSetDataResponse'],
         convert: (model, msg, publish, options, meta) => {
+            let data;
+
+            if (msg.data) {
+                data = msq.data;
+            } else if (msg.dpValues && msg.dpValues.length === 1) {
+                data = msg.dpValues[0];
+            }
+
+            if (!data) {
+                return;
+            }
+
             const dp = msg.data.dp;
             const value = tuya.getDataValue(msg.data.datatype, msg.data.data);
 
